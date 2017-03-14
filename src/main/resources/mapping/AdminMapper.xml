@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webshop.dao.AdminDao">
+
+
+    <insert id="addAdmin" parameterType="webshop.model.Admin" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO admin(adminName,adminPhone,adminEmail,adminPwd,pwdSalt,isDelete,shopName,createTime,modifyTime)
+            VALUES (#{adminName},#{adminPhone},#{adminEmail},#{adminPwd},#{pwdSalt},0,#{shopName},#{createTime},#{modifyTime})
+    </insert>
+    <select id="getById" resultType="webshop.model.Admin">
+        SELECT * FROM admin
+        WHERE id = #{adminId}
+    </select>
+    <select id="getByName" resultType="webshop.model.Admin">
+        SELECT * FROM admin
+        WHERE adminName = #{adminName}
+    </select>
+    <select id="getByShopName" resultType="webshop.model.Admin">
+        SELECT * FROM admin
+        WHERE shopName = #{shopName}
+    </select>
+</mapper>

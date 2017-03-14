@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webshop.dao.CategoryDao">
+
+    <select id="getByAdminId" resultType="webshop.model.Category">
+        SELECT * FROM category
+        WHERE adminId = #{adminId}
+    </select>
+    <select id="getByAdminIdOnPage" resultType="webshop.model.Category">
+        SELECT * FROM category
+        WHERE adminId = #{adminId} AND categoryName LIKE #{name}
+        LIMIT #{begin},#{end}
+    </select>
+    <select id="getCountByAdminId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM category
+        WHERE adminId = #{adminId}
+    </select>
+</mapper>
